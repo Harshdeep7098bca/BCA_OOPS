@@ -1,0 +1,60 @@
+#include <iostream>
+#include <cstring>
+
+class Students {
+private:
+    char name[50];
+    float marks[5];
+    
+public:
+    void getDetails() {
+        std::cout << "Enter student name: ";
+        std::cin.getline(name, 50);
+
+        std::cout << "Enter marks for five subjects:\n";
+        for (int i = 0; i < 5; ++i) {
+            std::cout << "Subject " << i+1 << ": ";
+            std::cin >> marks[i];
+        }
+        std::cin.ignore(); // Ignore the newline character left in the buffer
+
+    }
+
+    void displayDetails() {
+        std::cout << "Name: " << name << std::endl;
+        std::cout << "Marks: ";
+        for (int i = 0; i < 5; ++i) {
+            std::cout << marks[i] << " ";
+        }
+        std::cout << std::endl;
+        std::cout << "Grade: " << calculateGrade() << std::endl;
+    }
+
+private:
+    char calculateGrade() {
+        float totalMarks = 0;
+        for (int i = 0; i < 5; ++i) {
+            totalMarks += marks[i];
+        }
+        float average = totalMarks / 5;
+        if (average > 80) {
+            return 'E';
+        } else if (average >= 70 && average <= 80) {
+            return 'A';
+        } else if (average >= 60 && average < 70) {
+            return 'B';
+        } else if (average >= 50 && average < 60) {
+            return 'C';
+        } else {
+            return 'F';
+        }
+    }
+};
+
+int main() {
+    Students student;
+    student.getDetails();
+    student.displayDetails();
+
+    return 0;
+}
