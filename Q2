@@ -1,0 +1,38 @@
+#include <iostream>
+using namespace std;
+
+class Banking {
+private:
+    static float interest;
+    int principal;
+    int time; // in months only
+    static const int size = 50;
+    string arr2[size];
+
+public:
+    void getdata();
+    void Calculate_SI();
+};
+
+float Banking::interest = 2;
+
+void Banking::getdata() {
+    cout << "Enter principal amount: ";
+    cin >> principal;
+    cout << "Enter time (in months): ";
+    cin >> time;
+}
+
+void Banking::Calculate_SI() {
+    float SI = (principal * interest * time) / 100;
+    cout << "Simple Interest: " << SI << endl;
+}
+
+int main() {
+    Banking b1, b2;
+
+    b1.getdata();
+    b1.Calculate_SI();
+
+    return 0;
+}
