@@ -1,0 +1,41 @@
+#include <iostream>
+
+class Box {
+private:
+    int length;
+    int width;
+
+public:
+    void getDimensions();
+    void showDimensions();
+};
+
+void Box::getDimensions() {
+    std::cout << "Enter length: ";
+    std::cin >> length;
+    std::cout << "Enter width: ";
+    std::cin >> width;
+}
+
+void Box::showDimensions() {
+    std::cout << "Length: " << length << ", Width: " << width << std::endl;
+}
+
+int main() {
+    const int num_boxes = 3;
+    Box boxes[num_boxes];
+
+    // Get dimensions for each box
+    for (int i = 0; i < num_boxes; ++i) {
+        std::cout << "Enter dimensions for box " << i + 1 << ":" << std::endl;
+        boxes[i].getDimensions();
+    }
+
+    // Display dimensions for each box
+    for (int i = 0; i < num_boxes; ++i) {
+        std::cout << "Box " << i + 1 << " dimensions: ";
+        boxes[i].showDimensions();
+    }
+
+    return 0;
+}
